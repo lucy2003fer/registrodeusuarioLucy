@@ -15,3 +15,5 @@ class Persona(models.Model):
     telefono = models.CharField(max_length=50)
     fecha_Creacion = models.DateField(auto_now=True)
     estado = models.CharField(max_length=50, choices=ESTADO_CHOICE, default='activo')
+    
+    
