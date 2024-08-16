@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from django.shortcuts import Persona
 from .forms import PersonaForms
 
 # Create your views here.
 
-def regiaterUser(request):
+def registerUser(request):
     if request.method == 'POST':
         forms = PersonaForms(request.POST)
         if forms.is_valid():
@@ -15,6 +14,4 @@ def regiaterUser(request):
             forms = PersonaForms()
             
             
-        return render(request,
-                      template_name='registrarUsuario.html', context={'forms':
-                          forms})
+        return render(request,'registrarUsuario.html', {'forms':forms})
