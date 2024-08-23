@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Usuarios</title>
+</head>
+<body>
+    {%for Persona in personas %}
+    <div class="container">
+        <h3>{{Persona.nombre}}</h3>
+        <p><b>Cedula: </b>{{Persona.cedula}}</p>
+        <p><b>Email: </b>{{Persona.email}}</p>
+        <p><b>Telefono: </b>{{Persona.telefono}}</p>
+        <p><b>Fecha: </b>{{Persona.fecha_Creacion}}</p>
+        {% if Persona.estado == 'Activo'  %}
+            <p style="color:green">Activo</p>
+        {% endif %}
+        {% if Persona.estado == 'Inactivo'  %}
+            <p style="color:red">Inactivo</p>
+        {% endif %}
+        
+        {% endfor %} 
+        <a href="crear/">Registrar mas usuarios</a>
+    </div>
+
+</body>
+</html>

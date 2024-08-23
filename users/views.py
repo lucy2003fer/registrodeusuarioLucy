@@ -1,17 +1,18 @@
-from django.shortcuts import render, redirect
-from .forms import PersonaForms
+from django.shortcuts import render,redirect
+from .models import Persona
+from .form import PersonaForm
 
 # Create your views here.
 
-def registerUser(request):
+def listarPersonas(request):
+    Personas = Persona.objects.all()
+    return render(request, 'listarPersonas.html', {'personas': Personas})
+def crearPersona(request):
     if request.method == 'POST':
-        forms = PersonaForms(request.POST)
-        if forms.is_valid():
-            forms.save()
-            return redirect('ListarUsuario')
-        
-        else:
-            forms = PersonaForms()
-            
-            
-        return render(request,'registrarUsuario.html', {'forms':forms})
+        form = PersonaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listarPersonas')
+    else:
+        form = PersonaForm()
+        return render(request,'crearpersona.html',{'form':form})
